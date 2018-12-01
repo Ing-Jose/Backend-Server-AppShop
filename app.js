@@ -1,11 +1,11 @@
-// Importandos liibrerias despues de instalarlas npm
-var express = require('express');
-var mongoose = require('mongoose');
+// Importandos liibrerias despues de instalarlas npm ===============
+const express = require('express');
+const mongoose = require('mongoose');
 
-// Inicialización de variables utilizando la libreria 
-var app = express();
+// Inicialización de variables utilizando la libreria ===============
+const app = express();
 
-//CROSS
+// CROSS ============================================================
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
 });
 
 
-//Conexion a la DB
+// Conexion a la DB ============================================================
 mongoose.connection.openUri('mongodb://localhost:27017/appShopDB', { useNewUrlParser: true }, (err, res) => {
     if (err) throw err; //se detiene todo el proceso
     console.log('Base de datos \x1b[96m%s\x1b[0m', 'online')
@@ -35,19 +35,28 @@ app.use(express.urlencoded({ extended: false }));
         // es bueno estadarizar las respuestas
     });
     */
-//Importando rutas
-var appRoutes = require('./routes/app'); // Importar rutas 
-var usarioRoutes = require('./routes/usuario'); // Importar rutas de usuario
-// var loginRoutes = require('./routes/login');
-var loginRoutes = require('./routes/login'); // Importar rutas de usuario
+// Importando rutas ============================================================
+const appRoutes = require('./routes/app'); // Importar rutas 
+const usarioRoutes = require('./routes/usuario'); // Importar rutas de usuario
+const loginRoutes = require('./routes/login'); // Importar rutas de usuario
+const proveedorRoutes = require('./routes/proveedor');// Importar rutas de proveedor
+const zapatoRoutes = require('./routes/zapato');// Importar rutas de zapatos
+const clienteRoutes = require('./routes/cliente');// Importar rutas de cliente
+const cuentaRoutes = require('./routes/cuenta');// Importar rutas de cliente
+const abonoRoutes = require('./routes/abono');// Importar rutas de cliente
 
-// Middleware
+// Middleware ===================================================================
 app.use('/usuario', usarioRoutes);
 app.use('/login', loginRoutes);
-// app.use('/login', loginRoutes);
+app.use('/proveedor', proveedorRoutes);
+app.use('/zapato', zapatoRoutes);
+app.use('/cliente', clienteRoutes);
+app.use('/cuenta', cuentaRoutes);
+app.use('/abono', abonoRoutes);
 
 app.use('/', appRoutes);
-// escuchar peticiones 
+
+// Escuchar peticiones ============================================================
 app.listen(3000, () => {
     console.log('Express server puerto 3000: \x1b[94m%s\x1b[0m', 'online')
 });

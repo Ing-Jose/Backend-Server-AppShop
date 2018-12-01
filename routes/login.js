@@ -25,7 +25,6 @@ app.post('/',(req, res) => {
     */
    Usuario.findOne({email: body.email}, (err, user) =>{
        if (err) {
-           // con el return cuando se dispara la funcion hasta aca queda el procedimiento
            return res.status(500).json({
                ok: false,
                mensaje: 'Error al buscar usuario',
