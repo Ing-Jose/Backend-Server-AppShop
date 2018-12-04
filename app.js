@@ -42,8 +42,11 @@ const loginRoutes = require('./routes/login'); // Importar rutas de usuario
 const proveedorRoutes = require('./routes/proveedor');// Importar rutas de proveedor
 const zapatoRoutes = require('./routes/zapato');// Importar rutas de zapatos
 const clienteRoutes = require('./routes/cliente');// Importar rutas de cliente
-const cuentaRoutes = require('./routes/cuenta');// Importar rutas de cliente
-const abonoRoutes = require('./routes/abono');// Importar rutas de cliente
+const cuentaRoutes = require('./routes/cuenta');// Importar rutas de cuenta
+const abonoRoutes = require('./routes/abono');// Importar rutas de abono
+const busquedaRoutes = require('./routes/busqueda');// Importar rutas de busqueda
+const uploadRoutes = require('./routes/upload');// Importar rutas de busqueda
+var imagenRoutes = require('./routes/imagenes');
 
 // Middleware ===================================================================
 app.use('/usuario', usarioRoutes);
@@ -53,6 +56,10 @@ app.use('/zapato', zapatoRoutes);
 app.use('/cliente', clienteRoutes);
 app.use('/cuenta', cuentaRoutes);
 app.use('/abono', abonoRoutes);
+app.use('/busqueda', busquedaRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/img', imagenRoutes);
+
 
 app.use('/', appRoutes);
 
